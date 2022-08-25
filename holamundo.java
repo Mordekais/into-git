@@ -1,6 +1,6 @@
 class holamundo{
     public static void main(String[] args) {
-        saludo("Royer");
+        saludo("Roger");
     }
 
     public static void saludo( String nombre) {
