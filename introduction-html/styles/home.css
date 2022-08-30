@@ -1,0 +1,14 @@
+#titulo-principal{
+    text-align: center;
+}
+
+.subtitulo{
+    text-align: center;
+    color: blueviolet;
+}
+
+#contenedor-imagen{
+    border: 1px solid red;
+    margin-top: 50px;
+    padding-left: 39%;
+}
