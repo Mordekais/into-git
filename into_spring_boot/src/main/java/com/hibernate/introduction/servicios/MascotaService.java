@@ -53,8 +53,34 @@ public class MascotaService {
     return mascotas;
   }
 
-  public String getNombreApellidoComun(String nombre, String apellido) {
-    return "Nombre: " + nombre + " - Apellido: " + apellido;
+  public Mascota getMascotaXId(int id) {
+    Mascota mascota = new Mascota();
+    Session session = openSession();
+    try {
+      mascota = session.find(Mascota.class, id);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    return mascota;
+  }
+
+  public Mascota getNombreApellido(String nombre, String apellido) {
+    Mascota mascota = new Mascota();
+    Session session = openSession();
+    try {
+      List<Mascota> list = session
+          .createQuery("from Mascota where nombre = :nombre and apellido = :apellido", Mascota.class)
+          .setParameter("nombre", nombre)
+          .setParameter("apellido", apellido)
+          .list();
+      if (list.size() > 0) {
+        mascota = list.get(0);
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    session.close();
+    return mascota;
   }
 
   public String create(Mascota mascota) {
@@ -70,6 +96,37 @@ public class MascotaService {
     }
     session.close();
     return resp;
+  }
+
+  public String update(Mascota mascota) {
+    String message = "";
+    Session session = openSession();
+    try {
+      session.merge(mascota);
+      session.getTransaction().commit();
+      message = "Mascota actualizada con exito";
+    } catch (Exception e) {
+      e.printStackTrace();
+      message = e.getMessage();
+    }
+    session.close();
+    return message;
+  }
+
+  public String delete(int id) {
+    String message = "";
+    Session session = openSession();
+    try {
+      Mascota mascota = getMascotaXId(id);
+      session.remove(mascota);
+      session.getTransaction().commit();
+      message = "Mascota eliminada con éxito";
+    } catch (Exception e) {
+      e.printStackTrace();
+      message = e.getMessage();
+    }
+    session.close();
+    return message;
   }
 
 }
