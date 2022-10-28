@@ -5,10 +5,7 @@ import java.util.List;
 import com.hibernate.introduction.controlador.MascotaController;
 import com.hibernate.introduction.modelo.Mascota;
 
-/**
- * Hello world!
- *
- */
+
 public class App {
     public static void main(String[] args) {
       MascotaController controller = new MascotaController();
