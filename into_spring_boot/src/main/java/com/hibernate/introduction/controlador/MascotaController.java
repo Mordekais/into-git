@@ -1,6 +1,7 @@
 package com.hibernate.introduction.controlador;
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -43,8 +44,8 @@ public class MascotaController {
   }
 
   @GetMapping("/commons")
-  public Mascota getNombreApellido(@RequestParam String nombre, @RequestParam String apellido) {
-    return service.getNombreApellido(nombre, apellido);
+  public Mascota getNombreApellido(@RequestParam String nombre) {
+    return service.getNombreApellido(nombre);
   }
 
   @GetMapping("/id/{id}")
@@ -58,11 +59,13 @@ public class MascotaController {
   }
 
   @PutMapping
+  @CrossOrigin("*")
   public String update(@RequestBody Mascota mascota) {
     return service.update(mascota);
   }
 
   @DeleteMapping("/{id}")
+  @CrossOrigin("*")
   public String delete(@PathVariable(name = "id") int id) {
     return service.delete(id);
   }
