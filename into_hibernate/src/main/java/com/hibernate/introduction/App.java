@@ -2,8 +2,6 @@ package com.hibernate.introduction;
 
 import java.util.List;
 
-import javax.swing.JOptionPane;
-
 import com.hibernate.introduction.controlador.MascotaController;
 import com.hibernate.introduction.modelo.Mascota;
 
