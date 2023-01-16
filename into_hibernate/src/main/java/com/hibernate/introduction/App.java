@@ -1,6 +1,7 @@
 package com.hibernate.introduction;
 
 import java.util.List;
+
 import com.hibernate.introduction.controlador.MascotaController;
 import com.hibernate.introduction.modelo.Mascota;
 
